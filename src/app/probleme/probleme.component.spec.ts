@@ -21,14 +21,10 @@ describe('ProblemeComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  it('should create',() => {
-    expect(component).toBeTruthy();
-  })
-
-  it('champ nom du produit doit comporter au moins 5 caractères', () => {
+  
+  it('Zone PRÉNOM invalide avec 2 caractères ', () => {
     let zone = component.problemeForm.controls['prenom']
-    zone.setValue('a'.repeat(3));
-    expect(zone.valid).toBeTruthy();
+    zone.setValue('a'.repeat(2));
+    expect(zone.invalid).toBeTruthy();
   });
 });
