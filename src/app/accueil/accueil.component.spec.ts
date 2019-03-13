@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccueilComponent } from './accueil.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 describe('AccueilComponent', () => {
   let component: AccueilComponent;
@@ -8,6 +10,7 @@ describe('AccueilComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, AngularFontAwesomeModule],
       declarations: [ AccueilComponent ]
     })
     .compileComponents();
@@ -17,9 +20,5 @@ describe('AccueilComponent', () => {
     fixture = TestBed.createComponent(AccueilComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

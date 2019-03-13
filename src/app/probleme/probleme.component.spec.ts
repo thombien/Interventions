@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProblemeComponent } from './probleme.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
@@ -8,6 +10,7 @@ describe('ProblemeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, AngularFontAwesomeModule],
       declarations: [ ProblemeComponent ]
     })
     .compileComponents();
@@ -19,7 +22,13 @@ describe('ProblemeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create',() => {
     expect(component).toBeTruthy();
+  })
+
+  it('champ nom du produit doit comporter au moins 5 caractères', () => {
+    let zone = component.problemeForm.controls['prenom']
+    zone.setValue('a'.repeat(3));
+    expect(zone.valid).toBeTruthy();
   });
 });
