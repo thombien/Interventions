@@ -4,6 +4,8 @@ import { ProblemeComponent } from './probleme.component';
 import { ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { VerifierCaracteresValidator } from '../shared/longueur-minimum/longueur-minimum';
+import { typeProblemeService } from './typeProbleme.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
@@ -11,8 +13,9 @@ describe('ProblemeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, AngularFontAwesomeModule],
-      declarations: [ ProblemeComponent ]
+      imports: [ReactiveFormsModule, AngularFontAwesomeModule, HttpClientModule],
+      declarations: [ ProblemeComponent ],
+      providers:[typeProblemeService]
     })
     .compileComponents();
   }));
@@ -68,5 +71,31 @@ describe('ProblemeComponent', () => {
     expect(result['nbreCaracteresInsuffisants']).toBe(true);
   });
   
-  
+  it('#15 | Zone TELEPHONE est désactivée quand ne pas me notifier',()=> {
+    component.appliquerNotifications("NePasModifier");
+
+    let zone = component.problemeForm.get('telephone');
+    expect(zone.status).toEqual('DISABLED');
+  });
+
+  it('#16 | Zone TELEPHONE est vide quand ne pas me notifier', () => {
+    component.appliquerNotifications("NePasModifier");
+
+    let zone = component.problemeForm.get('telephone');
+    expect(zone.value).toEqual(null);
+  });
+
+  it('#17 | Zone ADRESSE COURRIEL est désactivée quand ne pas me notifier', () => {
+    component.appliquerNotifications("NePasModifier");
+
+    let zone = component.problemeForm.get('courrielGroup.courriel');
+    expect(zone.status).toEqual('DISABLED');
+  });
+
+  it('#18 | Zone CONFIRMER COURRIEL est désactivée quand ne pas me notifier', () => {
+    component.appliquerNotifications("ParCourriel");
+
+    let zone = component.problemeForm.get('courrielGroup.courrielConfirmation');
+    expect(zone.status).not.toEqual('DISABLED');
+  });
 });
