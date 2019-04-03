@@ -1,4 +1,4 @@
-import { VerifierCaracteresValidator } from "./longueur-minimum.component";
+import { VerifierCaracteresValidator } from "./longueur-minimum";
 import { AbstractControl } from '@angular/forms';
 
 describe('longueur zone Validator', () => {

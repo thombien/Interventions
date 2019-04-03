@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProblemeComponent } from './probleme.component';
 import { ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { VerifierCaracteresValidator } from '../shared/longueur-minimum/longueur-minimum.component';
+import { VerifierCaracteresValidator } from '../shared/longueur-minimum/longueur-minimum';
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
