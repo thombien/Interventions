@@ -93,9 +93,11 @@ describe('ProblemeComponent', () => {
   });
 
   it('#18 | Zone CONFIRMER COURRIEL est désactivée quand ne pas me notifier', () => {
-    component.appliquerNotifications("ParCourriel");
+    component.appliquerNotifications("NePasModifier");
 
     let zone = component.problemeForm.get('courrielGroup.courrielConfirmation');
     expect(zone.status).not.toEqual('DISABLED');
   });
+
+
 });
