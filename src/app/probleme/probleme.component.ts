@@ -30,6 +30,9 @@ export class ProblemeComponent implements OnInit {
         courrielConfirmation: [{ value: '', disabled: true }],
       }),
       telephone: [{ value: '', disabled: true }],
+      descriptionProbleme: ['', [Validators.required, Validators.minLength(5)]],
+      noUnite: '',
+      dateProbleme: {value: Date(), disabled: true} 
     });
 
     this.types.obtenirTypeProbleme()
@@ -62,9 +65,9 @@ export class ProblemeComponent implements OnInit {
 
 
     if (notification === 'ParCourriel') {
-      courrielControl.setValidators([Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+")]);
+      courrielControl.setValidators([Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z0-9._%+-]")]);
       courrielControl.enable();
-      courrielConfirmationControl.setValidators([Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+")]);
+      courrielConfirmationControl.setValidators([Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z0-9._%+-]")]);
       courrielConfirmationControl.enable();
       courrielGroupControl.setValidators([Validators.compose([emailMatcherValidator.courrielDifferents()])]);        
       // Si le validateur est dans un autre fichier l'écire sous la forme suivante : 
