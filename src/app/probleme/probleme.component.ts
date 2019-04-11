@@ -23,7 +23,6 @@ export class ProblemeComponent implements OnInit {
       prenom: ['', [VerifierCaracteresValidator.longueurMinimum(3), Validators.required]],
       nom: ['', [VerifierCaracteresValidator.longueurMaximum(50), Validators.required]],
       type: ['', VerifierCaracteresValidator.selectionObligatoire()],
-      noTypeProbleme: ['', Validators.required],
       notification: ['NePasNotifier'],
       courrielGroup: this.fb.group({
         courriel: [{ value: '', disabled: true }],
